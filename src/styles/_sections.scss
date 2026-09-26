@@ -1,0 +1,631 @@
+@use 'tokens' as *;
+
+// ================= WHY US =================
+// Figma: title at x80, three columns 284px wide at x452 / 764 / 1076
+.why {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) repeat(3, minmax(0, 284px));
+  column-gap: 28px;
+  row-gap: 48px;
+  padding-block: fluid(72, 120);
+
+  &__title {
+    align-self: center;
+    font-weight: 700;
+    font-size: fluid(30, 42);
+    line-height: 1.24;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__heading {
+    font-weight: 700;
+    font-size: fluid(21, 24);
+    line-height: 1.25;
+    opacity: 0.9;
+  }
+
+  &__text {
+    margin-top: 20px;
+    margin-bottom: 14px;
+    font-size: 16px;
+    line-height: 1.85;
+    opacity: 0.8;
+  }
+
+  @include down($bp-lg) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    &__title {
+      grid-column: 1 / -1;
+      br {
+        display: none;
+      }
+    }
+  }
+
+  @include down($bp-md) {
+    grid-template-columns: 1fr;
+    row-gap: 36px;
+  }
+}
+
+// ================= PRODUCTS =================
+.products {
+  padding-block: 50px fluid(56, 50);
+  background: $c-surface;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.tabs {
+  display: flex;
+  margin-top: 32px;
+  padding: 6px;
+  border-radius: 44px;
+  background: #eeeeee;
+
+  &__tab {
+    min-width: 84px;
+    height: 45px;
+    padding: 4px 20px;
+    border: 0;
+    border-radius: 32px;
+    background: transparent;
+    color: rgba($c-text, 0.8);
+    font-size: 18px;
+    line-height: 1.85;
+    transition:
+      background 0.25s ease,
+      box-shadow 0.25s ease;
+
+    &[aria-selected='true'] {
+      background: $c-white;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    @include hover {
+      color: $c-text;
+    }
+  }
+
+  @include down($bp-sm) {
+    &__tab {
+      min-width: 0;
+      padding-inline: 14px;
+      font-size: 16px;
+    }
+  }
+}
+
+// Generic carousel: horizontal scroll-snap track with arrow buttons on the sides
+.carousel {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  .round-btn {
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    transform: translateY(-50%);
+
+    &:active {
+      transform: translateY(-50%) scale(0.94);
+    }
+  }
+
+  .round-btn--prev {
+    left: 0;
+  }
+
+  .round-btn--next {
+    right: 0;
+  }
+
+  &__track {
+    display: flex;
+    gap: var(--gap);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    > * {
+      flex: none;
+      scroll-snap-align: start;
+    }
+  }
+
+  @include down($bp-md) {
+    .round-btn {
+      display: none;
+    }
+  }
+}
+
+.carousel--products {
+  --gap: 42px;
+
+  margin-top: 30px;
+  justify-content: center;
+
+  .tab-panel {
+    width: 100%;
+    max-width: 1202px;
+  }
+
+  .carousel__track {
+    padding-top: 50px; // room for the images that stick out of the cards
+    padding-inline: 2px;
+    padding-bottom: 24px;
+  }
+
+  .round-btn--prev {
+    left: 25px;
+  }
+
+  .round-btn--next {
+    right: 25px;
+  }
+
+  @include down($bp-xl) {
+    --gap: 24px;
+
+    .round-btn--prev {
+      left: -8px;
+    }
+
+    .round-btn--next {
+      right: -8px;
+    }
+  }
+}
+
+.tab-panel--empty {
+  display: grid;
+  place-items: center;
+  min-height: 300px;
+  color: $c-muted;
+  font-size: 18px;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.product {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 268px;
+  border-radius: $radius;
+  background: $c-white;
+  font-family: $font-card;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  // grey top zone behind the image
+  &::before {
+    content: '';
+    height: 239px;
+    border-radius: $radius $radius 0 0;
+    background: $c-card-top;
+  }
+
+  // soft blurred shadow under the chair
+  &::after {
+    content: '';
+    position: absolute;
+    top: 150px;
+    left: 58px;
+    width: 151px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.09);
+    filter: blur(24px);
+  }
+
+  @include hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(13, 27, 57, 0.08);
+
+    .product__img {
+      transform: translateX(-50%) translateY(-6px) scale(1.03);
+    }
+  }
+
+  &__img {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    z-index: 1;
+    width: 218px;
+    height: 256px;
+    object-fit: contain;
+    transform: translateX(-50%);
+    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    padding: 14px 21px 27px;
+  }
+
+  &__cat {
+    color: $c-muted;
+    font-size: 16.75px;
+    line-height: 1.2;
+  }
+
+  &__name {
+    margin-top: 6px;
+    margin-bottom: 7px;
+    color: $c-navy;
+    font-weight: 600;
+    font-size: 21.3px;
+    line-height: 1.22;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 37px;
+  }
+
+  &__price {
+    display: flex;
+    align-items: flex-start;
+    gap: 3px;
+    color: $c-navy;
+    font-weight: 600;
+    font-size: 21.3px;
+    line-height: 1.2;
+
+    span {
+      font-size: 15.2px;
+    }
+  }
+}
+
+.add-btn {
+  display: grid;
+  place-items: center;
+  width: 49px;
+  height: 49px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: $c-navy;
+  color: $c-white;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+
+  @include hover {
+    background: $c-primary;
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  &.is-added {
+    background: $c-primary;
+  }
+}
+
+.products .more--lg {
+  margin-top: 36px;
+}
+
+// ================= SPLIT SECTIONS (Experience / Materials) =================
+.split {
+  display: grid;
+  align-items: center;
+  column-gap: fluid(40, 141);
+  max-width: 1440px;
+  margin-inline: auto;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  &__title {
+    max-width: 440px;
+    font-weight: 700;
+    font-size: fluid(30, 42);
+    line-height: 1.24;
+    text-transform: capitalize;
+  }
+
+  &__text {
+    max-width: 556px;
+    font-size: fluid(16, 18);
+    line-height: 1.85;
+    opacity: 0.8;
+  }
+
+  &__body .more {
+    margin-top: 4px;
+  }
+
+  @include down($bp-lg) {
+    grid-template-columns: 1fr !important;
+    row-gap: 48px;
+
+    &__body {
+      padding-inline: var(--gutter);
+    }
+  }
+}
+
+// Experience: photo bleeds off the left edge (Figma x: -27 → 602)
+.split--experience {
+  grid-template-columns: minmax(0, 602fr) minmax(0, 697fr);
+  padding-top: fluid(120, 306);
+  padding-right: var(--gutter);
+
+  .split__media {
+    position: relative;
+    isolation: isolate;
+    align-self: start;
+
+    // grey plate above-left of the photo
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: -66px;
+      z-index: -2;
+      width: 71.8%;
+      height: 94.8%;
+      border-radius: 0 $radius $radius 0;
+      background: $c-surface;
+    }
+
+    // grey sliver on the right
+    &::after {
+      content: '';
+      position: absolute;
+      right: -61px;
+      top: 72px;
+      z-index: -2;
+      width: 30%;
+      height: 67.6%;
+      border-radius: $radius;
+      background: $c-surface;
+    }
+
+    img {
+      width: 100%;
+      aspect-ratio: 602 / 445;
+      object-fit: cover;
+      border-radius: 0 $radius $radius 0;
+      box-shadow: 0 40px 60px -20px rgba(33, 26, 16, 0.35);
+    }
+  }
+
+  .split__body {
+    padding-top: 17px;
+  }
+
+  @include down($bp-lg) {
+    padding-right: 0;
+
+    .split__media {
+      margin-right: var(--gutter);
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+
+// Materials: two small photos + a large one bleeding off the right edge
+.split--materials {
+  grid-template-columns: minmax(0, 556fr) minmax(0, 710fr);
+  column-gap: fluid(40, 94);
+  padding-top: fluid(100, 270);
+  padding-left: var(--gutter);
+
+  @include down($bp-lg) {
+    padding-left: 0;
+
+    .split__body {
+      order: -1;
+    }
+  }
+}
+
+.collage {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: 223fr 42fr 445fr;
+  grid-template-rows: 229fr 47fr 339fr;
+  aspect-ratio: 710 / 614;
+
+  // grey plate behind the large photo (Figma x: 1167 → 1662, clipped)
+  &::before {
+    content: '';
+    position: absolute;
+    left: 61.3%;
+    top: 11.9%;
+    right: 0;
+    height: 68.7%;
+    z-index: -2;
+    border-radius: $radius 0 0 $radius;
+    background: $c-surface;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+    box-shadow: 0 30px 50px -18px rgba(33, 26, 16, 0.3);
+
+    &--a {
+      grid-area: 1 / 1 / 2 / 2;
+    }
+
+    &--b {
+      grid-area: 3 / 1 / 4 / 2;
+      margin-top: -21px;
+      height: calc(100% + 21px - 7px);
+    }
+
+    &--c {
+      grid-area: 2 / 3 / 4 / 4;
+      margin-top: -91px;
+      height: calc(100% + 91px - 30px);
+      align-self: start;
+      border-radius: $radius 0 0 $radius;
+    }
+  }
+
+  @include down($bp-lg) {
+    margin-left: var(--gutter);
+  }
+}
+
+// ================= REVIEWS =================
+.reviews {
+  padding-top: fluid(100, 240);
+  padding-bottom: fluid(96, 215);
+
+  .section-title {
+    margin-bottom: fluid(40, 60);
+  }
+}
+
+.carousel--reviews {
+  --gap: 38px;
+
+  justify-content: center;
+
+  .carousel__track {
+    max-width: 1188px;
+    padding: 4px 2px 72px;
+    margin-bottom: -48px;
+  }
+
+  .round-btn--prev {
+    left: 32px;
+  }
+
+  .round-btn--next {
+    right: 0;
+  }
+
+  @include down($bp-xl) {
+    --gap: 24px;
+
+    .round-btn--prev {
+      left: -8px;
+    }
+
+    .round-btn--next {
+      right: -8px;
+    }
+  }
+}
+
+.review {
+  position: relative;
+  isolation: isolate;
+  width: 370px;
+  height: 476px;
+
+  @include down($bp-sm) {
+    width: 300px;
+    height: 420px;
+  }
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px;
+    box-shadow: 0 36px 48px -28px rgba(33, 26, 16, 0.4);
+  }
+
+  // Figma "Union": white card with a rounded bump for the avatar
+  &__card {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 20px 25px;
+    text-align: center;
+    filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.04));
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 334 239' preserveAspectRatio='none'%3E%3Cpath fill='white' d='M196.2 17.62c4.05 7.67 6.07 11.5 7.27 12.63 1.53 1.46 1.69 1.55 3.69 2.22 1.55.53 3.98.53 8.84.53h89.01c10.15 0 15.22 0 19.1 1.97a18 18 0 0 1 7.92 7.92c1.97 3.88 1.97 8.95 1.97 19.1v148.02c0 10.15 0 15.22-1.97 19.1a18 18 0 0 1-7.92 7.92c-3.88 1.97-8.95 1.97-19.1 1.97H28.99c-10.15 0-15.22 0-19.1-1.97a18 18 0 0 1-7.92-7.92C0 225.23 0 220.16 0 210.01V61.99c0-10.15 0-15.22 1.97-19.1a18 18 0 0 1 7.92-7.92C13.77 33 18.84 33 28.99 33H118c4.86 0 7.29 0 8.85-.53 2-.67 2.15-.76 3.68-2.22 1.2-1.13 3.22-4.96 7.27-12.63A33 33 0 0 1 167 0a33 33 0 0 1 29.2 17.62Z'/%3E%3C/svg%3E")
+        top center / 100% 100% no-repeat;
+    }
+  }
+
+  &__avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+  }
+
+  &__name {
+    margin-top: 8px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.2;
+  }
+
+  &__role {
+    margin-top: 6px;
+    font-size: 12px;
+    line-height: 1.2;
+    opacity: 0.6;
+  }
+
+  &__quote {
+    max-width: 252px;
+    margin-top: 22px;
+    margin-bottom: 22px;
+    font-size: 14px;
+    line-height: 1.3;
+    opacity: 0.8;
+  }
+}

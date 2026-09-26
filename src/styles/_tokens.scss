@@ -1,0 +1,61 @@
+@use 'sass:math';
+
+// ---------- Colors (from the Figma file) ----------
+$c-primary: #e58411;
+$c-primary-soft: #f6973f; // footer headings, small stars
+$c-star: #f6b76f;
+$c-text: #1e1e1e;
+$c-navy: #0d1b39; // product cards
+$c-muted: #8d8d8d;
+$c-surface: #f7f7f7;
+$c-card-top: #fafafa;
+$c-white: #ffffff;
+
+// ---------- Typography ----------
+// Design uses Gilroy (commercial). Outfit is the closest free geometric sans.
+$font-main: 'Outfit', 'Helvetica Neue', Arial, sans-serif;
+$font-card: 'Inter', 'Helvetica Neue', Arial, sans-serif; // product cards use Inter in the design
+
+// ---------- Layout ----------
+$design-width: 1440;
+$container: 1280px; // x: 80 → 1360
+
+$bp-sm: 600px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+
+$radius: 20px;
+$shadow-btn: 0 7px 20px rgba(0, 0, 0, 0.06);
+
+// Equals $max at the 1440 artboard, scales with the viewport, never below $min.
+@function fluid($min, $max) {
+  $vw: math.div($max, $design-width) * 100vw;
+  @return clamp(#{$min}px, #{$vw}, #{$max}px);
+}
+
+@mixin down($bp) {
+  @media (max-width: ($bp - 0.02px)) {
+    @content;
+  }
+}
+
+@mixin up($bp) {
+  @media (min-width: $bp) {
+    @content;
+  }
+}
+
+@mixin motion {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}
+
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}

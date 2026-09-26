@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panto — Minimalistic &amp; Modern Furniture</title>
+    <meta
+      name="description"
+      content="Panto furniture store: make your interior more minimalistic and modern with chairs, beds, sofas and lamps."
+    />
+    <meta name="theme-color" content="#e58411" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preload" as="image" href="/images/hero-1440.webp" imagesrcset="/images/hero-1440.webp 1440w, /images/hero.webp 2880w" imagesizes="100vw" />
+
+    <script>
+      document.documentElement.classList.add('js');
+    </script>
+    <script type="module" src="/src/main.ts"></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- ============ SVG SPRITE ============ -->
+    <svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <symbol id="i-arrow" viewBox="0 0 48 24">
+        <path d="M4.5 12.4H42m-5.4 5.4C38 15.17 42 12.4 42 12.4S37.51 9.45 36.6 7" fill="none" stroke="currentColor" stroke-linecap="square" />
+      </symbol>
+      <symbol id="i-next" viewBox="0 0 26 26">
+        <path d="M4.5 13.2H21m-4.7 4.7c1.25-2.28 4.7-4.7 4.7-4.7s-3.9-2.57-4.7-4.7" fill="none" stroke="currentColor" stroke-width="2.17" stroke-linecap="square" />
+      </symbol>
+      <symbol id="i-star" viewBox="0 0 16 15">
+        <path fill="currentColor" d="M12.12 9c-.2.19-.29.47-.24.74l.68 3.75a.83.83 0 0 1-.34.82.83.83 0 0 1-.89.06l-3.37-1.76a.84.84 0 0 0-.38-.1h-.21a.62.62 0 0 0-.2.07l-3.38 1.77a.89.89 0 0 1-.54.08.85.85 0 0 1-.68-.97l.68-3.75a.86.86 0 0 0-.24-.74L.25 6.3a.82.82 0 0 1-.2-.86.85.85 0 0 1 .67-.57l3.79-.55a.84.84 0 0 0 .67-.46L6.85.44a.8.8 0 0 1 .15-.2l.07-.06a.49.49 0 0 1 .12-.1l.08-.03L7.4 0h.32c.29.03.54.2.67.46l1.69 3.4c.12.25.36.42.63.46l3.79.55c.32.05.59.27.69.57.1.3.01.64-.22.86L12.12 9Z" />
+      </symbol>
+      <symbol id="i-plus" viewBox="0 0 25 25">
+        <path fill="currentColor" d="M21.93 12.19c0-.77-.62-1.4-1.4-1.4h-6.96V3.83a1.39 1.39 0 0 0-2.78 0v6.96H3.82a1.39 1.39 0 0 0 0 2.79h6.97v6.96a1.39 1.39 0 0 0 2.78 0v-6.96h6.97c.77 0 1.39-.62 1.39-1.39Z" />
+      </symbol>
+    </svg>
+
+    <!-- ============ HEADER ============ -->
+    <header class="header">
+      <div class="header__inner container">
+        <a class="logo" href="#top" aria-label="Panto — home">Panto</a>
+
+        <nav class="nav" id="site-nav" aria-label="Main">
+          <ul class="nav__list">
+            <li>
+              <a class="nav__link" href="#products">
+                Furniture
+                <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+                  <path fill="currentColor" d="M4 7.5c0 .13.02.25.07.37.05.11.11.22.2.3l4.28 4.14a.63.63 0 0 0 .9 0l4.29-4.29a.9.9 0 0 0 .26-.58.95.95 0 0 0-.16-.63.7.7 0 0 0-.49-.3.66.66 0 0 0-.52.19L9 10.53 5.17 6.83a.67.67 0 0 0-.76-.12.75.75 0 0 0-.3.32A.93.93 0 0 0 4 7.5Z" />
+                </svg>
+              </a>
+            </li>
+            <li><a class="nav__link" href="#products">Shop</a></li>
+            <li><a class="nav__link" href="#experience">About Us</a></li>
+            <li><a class="nav__link" href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header__actions">
+          <a class="cart" href="#products" aria-label="Cart, 0 items">
+            <svg width="26" height="29" viewBox="0 0 26 29" aria-hidden="true">
+              <path fill="currentColor" d="M12.76 0a7.07 7.07 0 0 1 7.07 6.76h-.03a.75.75 0 0 1-.06.32h.22c1.72 0 3.53 1.2 4.25 4.08l.08.34 1.09 8.78c.78 5.6-2.28 7.95-6.46 8.05H6.9c-4.25 0-7.52-1.55-6.8-7.67l.05-.38 1.1-8.78C1.8 8.4 3.62 7.17 5.38 7.09h.3a1.05 1.05 0 0 1 0-.33A7.07 7.07 0 0 1 12.76 0ZM8.64 11.8c-.7 0-1.25.58-1.25 1.29 0 .71.56 1.29 1.25 1.29s1.25-.58 1.25-1.29l-.01-.16a1.25 1.25 0 0 0-1.24-1.13Zm8.2 0c-.69 0-1.25.58-1.25 1.29 0 .71.56 1.29 1.25 1.29.69 0 1.25-.58 1.25-1.29 0-.71-.56-1.29-1.25-1.29ZM12.7 1.85a4.93 4.93 0 0 0-4.94 4.91.9.9 0 0 1 0 .32h9.94a.88.88 0 0 1-.06-.32 4.93 4.93 0 0 0-4.94-4.91Z" />
+            </svg>
+            <span class="cart__count" aria-hidden="true">0</span>
+          </a>
+          <button class="burger" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu">
+            <span class="burger__line"></span>
+            <span class="burger__line"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ============ HERO ============ -->
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <img
+          class="hero__bg"
+          src="/images/hero-1440.webp"
+          srcset="/images/hero-1440.webp 1440w, /images/hero.webp 2880w"
+          sizes="100vw"
+          alt=""
+          width="1440"
+          height="1084"
+          fetchpriority="high"
+        />
+
+        <div class="hero__content container">
+          <h1 class="hero__title" id="hero-title">Make your interior more minimalistic &amp; modern</h1>
+          <p class="hero__text">Turn your room with panto into a lot more minimalist and modern with ease and speed</p>
+
+          <form class="search" role="search" action="#products">
+            <label class="visually-hidden" for="search-input">Search furniture</label>
+            <input class="search__input" id="search-input" type="search" name="q" placeholder="Search furniture" autocomplete="off" />
+            <button class="search__btn" type="submit" aria-label="Search">
+              <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+                <path d="M15.75 15.75l-3.36-3.37m1.86-4.5a6.38 6.38 0 1 1-12.75 0 6.38 6.38 0 0 1 12.75 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- Hotspots on the photo -->
+        <div class="hero__spots" aria-label="Product hotspots">
+          <div class="swatches" role="radiogroup" aria-label="Sofa colour">
+            <button class="swatch is-active" type="button" role="radio" aria-checked="true" aria-label="Orange" style="--c: #e58411"></button>
+            <button class="swatch" type="button" role="radio" aria-checked="false" aria-label="Teal" style="--c: #00d6c9"></button>
+            <button class="swatch" type="button" role="radio" aria-checked="false" aria-label="Grey" style="--c: #7c7c7c"></button>
+          </div>
+          <a class="spot spot--lg" href="#products" style="--x: 21.18%; --y: 63.9%" aria-label="Leather sofa"></a>
+          <a class="spot" href="#products" style="--x: 8.26%; --y: 70.02%" aria-label="Side table"></a>
+          <a class="spot" href="#products" style="--x: 56.67%; --y: 73.15%" aria-label="Coffee table"></a>
+          <a class="spot spot--md" href="#products" style="--x: 96.35%; --y: 76.34%" aria-label="Floor plant"></a>
+        </div>
+      </section>
+
+      <!-- ============ WHY US ============ -->
+      <section class="why container" aria-labelledby="why-title">
+        <h2 class="why__title reveal" id="why-title">Why <br />Choosing Us</h2>
+        <article class="why__item reveal">
+          <h3 class="why__heading">Luxury facilities</h3>
+          <p class="why__text">
+            The advantage of hiring a workspace with us is that gives you comfortable service and all-around facilities.
+          </p>
+          <a class="more" href="#experience">More Info <svg width="48" height="24" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+        </article>
+        <article class="why__item reveal">
+          <h3 class="why__heading">Affordable Price</h3>
+          <p class="why__text">
+            You can get a workspace of the highest quality at an affordable price and still enjoy the facilities that are only here.
+          </p>
+          <a class="more" href="#materials">More Info <svg width="48" height="24" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+        </article>
+        <article class="why__item reveal">
+          <h3 class="why__heading">Many Choices</h3>
+          <p class="why__text">
+            We provide many unique work space choices so that you can choose the workspace to your liking.
+          </p>
+          <a class="more" href="#products">More Info <svg width="48" height="24" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+        </article>
+      </section>
+
+      <!-- ============ PRODUCTS ============ -->
+      <section class="products" id="products" aria-labelledby="products-title">
+        <div class="container">
+          <h2 class="section-title reveal" id="products-title">Best Selling Product</h2>
+
+          <div class="tabs reveal" role="tablist" aria-label="Product category">
+            <button class="tabs__tab" type="button" role="tab" id="tab-chair" aria-selected="true" aria-controls="panel-chair">Chair</button>
+            <button class="tabs__tab" type="button" role="tab" id="tab-beds" aria-selected="false" aria-controls="panel-beds" tabindex="-1">Beds</button>
+            <button class="tabs__tab" type="button" role="tab" id="tab-sofa" aria-selected="false" aria-controls="panel-sofa" tabindex="-1">Sofa</button>
+            <button class="tabs__tab" type="button" role="tab" id="tab-lamp" aria-selected="false" aria-controls="panel-lamp" tabindex="-1">Lamp</button>
+          </div>
+
+          <div class="carousel carousel--products" data-carousel>
+            <button class="round-btn round-btn--prev" type="button" data-prev aria-label="Previous products">
+              <svg width="26" height="26" aria-hidden="true"><use href="#i-next" /></svg>
+            </button>
+
+            <div class="tab-panel" id="panel-chair" role="tabpanel" aria-labelledby="tab-chair">
+              <ul class="carousel__track" data-track>
+                <li class="product">
+                  <img class="product__img" src="/images/product-01.webp" alt="Sakarias Armchair in dark grey" width="218" height="256" loading="lazy" />
+                  <div class="product__body">
+                    <p class="product__cat">Chair</p>
+                    <h3 class="product__name">Sakarias Armchair</h3>
+                    <p class="rating" aria-label="Rated 5 out of 5">
+                      <svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg>
+                    </p>
+                    <div class="product__footer">
+                      <p class="product__price"><span>$</span>392</p>
+                      <button class="add-btn" type="button" data-add aria-label="Add Sakarias Armchair to cart">
+                        <svg width="25" height="25" aria-hidden="true"><use href="#i-plus" /></svg>
+                      </button>
+                    </div>
+                  </div>
+                </li>
+                <li class="product">
+                  <img class="product__img" src="/images/product-02.webp" alt="Baltsar Chair in navy blue" width="218" height="256" loading="lazy" />
+                  <div class="product__body">
+                    <p class="product__cat">Chair</p>
+                    <h3 class="product__name">Baltsar Chair</h3>
+                    <p class="rating" aria-label="Rated 5 out of 5">
+                      <svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg>
+                    </p>
+                    <div class="product__footer">
+                      <p class="product__price"><span>$</span>299</p>
+                      <button class="add-btn" type="button" data-add aria-label="Add Baltsar Chair to cart">
+                        <svg width="25" height="25" aria-hidden="true"><use href="#i-plus" /></svg>
+                      </button>
+                    </div>
+                  </div>
+                </li>
+                <li class="product">
+                  <img class="product__img" src="/images/product-03.webp" alt="Anjay Chair in grey leather" width="223" height="250" loading="lazy" />
+                  <div class="product__body">
+                    <p class="product__cat">Chair</p>
+                    <h3 class="product__name">Anjay Chair</h3>
+                    <p class="rating" aria-label="Rated 5 out of 5">
+                      <svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg>
+                    </p>
+                    <div class="product__footer">
+                      <p class="product__price"><span>$</span>519</p>
+                      <button class="add-btn" type="button" data-add aria-label="Add Anjay Chair to cart">
+                        <svg width="25" height="25" aria-hidden="true"><use href="#i-plus" /></svg>
+                      </button>
+                    </div>
+                  </div>
+                </li>
+                <li class="product">
+                  <img class="product__img" src="/images/product-04.webp" alt="Nyantuy Chair with black and white pattern" width="241" height="289" loading="lazy" />
+                  <div class="product__body">
+                    <p class="product__cat">Chair</p>
+                    <h3 class="product__name">Nyantuy Chair</h3>
+                    <p class="rating" aria-label="Rated 5 out of 5">
+                      <svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg>
+                    </p>
+                    <div class="product__footer">
+                      <p class="product__price"><span>$</span>921</p>
+                      <button class="add-btn" type="button" data-add aria-label="Add Nyantuy Chair to cart">
+                        <svg width="25" height="25" aria-hidden="true"><use href="#i-plus" /></svg>
+                      </button>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="tab-panel tab-panel--empty" id="panel-beds" role="tabpanel" aria-labelledby="tab-beds" hidden>
+              <p>New beds are coming soon.</p>
+            </div>
+            <div class="tab-panel tab-panel--empty" id="panel-sofa" role="tabpanel" aria-labelledby="tab-sofa" hidden>
+              <p>New sofas are coming soon.</p>
+            </div>
+            <div class="tab-panel tab-panel--empty" id="panel-lamp" role="tabpanel" aria-labelledby="tab-lamp" hidden>
+              <p>New lamps are coming soon.</p>
+            </div>
+
+            <button class="round-btn round-btn--next" type="button" data-next aria-label="Next products">
+              <svg width="26" height="26" aria-hidden="true"><use href="#i-next" /></svg>
+            </button>
+          </div>
+
+          <a class="more more--lg" href="#products">View All <svg width="48" height="24" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+        </div>
+      </section>
+
+      <!-- ============ EXPERIENCE ============ -->
+      <section class="split split--experience" id="experience" aria-labelledby="experience-title">
+        <div class="split__media split__media--left reveal">
+          <img src="/images/experience.webp" alt="A mint sofa in a dark living room with wooden floor" width="602" height="445" loading="lazy" />
+        </div>
+        <div class="split__body">
+          <p class="eyebrow reveal">Experiences</p>
+          <h2 class="split__title reveal" id="experience-title">We provide you the best experience</h2>
+          <p class="split__text reveal">
+            You don’t have to worry about the result because all of these interiors are made by people who are professionals in their fields with an elegant and luxurious style and with premium quality materials
+          </p>
+          <a class="more reveal" href="#experience">More Info <svg width="48" height="24" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+        </div>
+      </section>
+
+      <!-- ============ MATERIALS ============ -->
+      <section class="split split--materials" id="materials" aria-labelledby="materials-title">
+        <div class="split__body">
+          <p class="eyebrow reveal">Materials</p>
+          <h2 class="split__title reveal" id="materials-title">Very serious materials for making furniture</h2>
+          <p class="split__text reveal">
+            Because panto was very serious about designing furniture for our environment, using a very expensive and famous capital but at a relatively low price
+          </p>
+          <a class="more reveal" href="#materials">More Info <svg width="48" height="24" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+        </div>
+        <div class="collage reveal">
+          <img class="collage__img collage__img--a" src="/images/materials-small-01.webp" alt="Grey armchair next to a round side table" width="223" height="229" loading="lazy" />
+          <img class="collage__img collage__img--b" src="/images/materials-small-02.webp" alt="Beige sofa in a green room" width="223" height="317" loading="lazy" />
+          <img class="collage__img collage__img--c" src="/images/materials-large.webp" alt="Wooden dining chairs by a bright window" width="445" height="445" loading="lazy" />
+        </div>
+      </section>
+
+      <!-- ============ REVIEWS ============ -->
+      <section class="reviews" aria-labelledby="reviews-title">
+        <div class="container">
+          <p class="eyebrow eyebrow--center reveal">Testimonials</p>
+          <h2 class="section-title reveal" id="reviews-title">Our Client Reviews</h2>
+
+          <div class="carousel carousel--reviews" data-carousel>
+            <button class="round-btn round-btn--prev" type="button" data-prev aria-label="Previous reviews">
+              <svg width="26" height="26" aria-hidden="true"><use href="#i-next" /></svg>
+            </button>
+            <ul class="carousel__track" data-track>
+              <li class="review">
+                <img class="review__bg" src="/images/review-01.webp" alt="" width="370" height="476" loading="lazy" />
+                <figure class="review__card">
+                  <img class="review__avatar" src="/images/avatar-01.webp" alt="" width="50" height="50" loading="lazy" />
+                  <figcaption>
+                    <p class="review__name">Bang Upin</p>
+                    <p class="review__role">Street Vendor</p>
+                  </figcaption>
+                  <blockquote class="review__quote">“Thank you so much, my room now feels more luxurious and looks expensive”</blockquote>
+                  <p class="rating rating--sm" aria-label="Rated 5 out of 5">
+                    <svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg>
+                  </p>
+                </figure>
+              </li>
+              <li class="review">
+                <img class="review__bg" src="/images/review-02.webp" alt="" width="370" height="476" loading="lazy" />
+                <figure class="review__card">
+                  <img class="review__avatar" src="/images/avatar-02.webp" alt="" width="50" height="50" loading="lazy" />
+                  <figcaption>
+                    <p class="review__name">Ibuk Sukijan</p>
+                    <p class="review__role">Housewife</p>
+                  </figcaption>
+                  <blockquote class="review__quote">“Thanks Panto, it feels like I live in an apartment now because everything looks so luxurious”</blockquote>
+                  <p class="rating rating--sm" aria-label="Rated 5 out of 5">
+                    <svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg>
+                  </p>
+                </figure>
+              </li>
+              <li class="review">
+                <img class="review__bg" src="/images/review-03.webp" alt="" width="370" height="476" loading="lazy" />
+                <figure class="review__card">
+                  <img class="review__avatar" src="/images/avatar-03.webp" alt="" width="50" height="50" loading="lazy" />
+                  <figcaption>
+                    <p class="review__name">Mpok Ina</p>
+                    <p class="review__role">Office Worker</p>
+                  </figcaption>
+                  <blockquote class="review__quote">“Very affordable for my not-so-deep pockets”</blockquote>
+                  <p class="rating rating--sm" aria-label="Rated 5 out of 5">
+                    <svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg><svg aria-hidden="true"><use href="#i-star" /></svg>
+                  </p>
+                </figure>
+              </li>
+            </ul>
+            <button class="round-btn round-btn--next" type="button" data-next aria-label="Next reviews">
+              <svg width="26" height="26" aria-hidden="true"><use href="#i-next" /></svg>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer" id="contact">
+      <div class="footer__inner">
+        <div class="footer__top">
+          <div class="footer__about">
+            <a class="logo" href="#top" aria-label="Panto — back to top">Panto</a>
+            <p>The advantage of hiring a workspace with us is that gives you comfortable service and all-around facilities.</p>
+          </div>
+          <nav class="footer__col" aria-labelledby="f-services">
+            <h2 class="footer__heading" id="f-services">Services</h2>
+            <ul>
+              <li><a href="#contact">Email Marketing</a></li>
+              <li><a href="#contact">Campaigns</a></li>
+              <li><a href="#contact">Branding</a></li>
+            </ul>
+          </nav>
+          <nav class="footer__col" aria-labelledby="f-furniture">
+            <h2 class="footer__heading" id="f-furniture">Furniture</h2>
+            <ul>
+              <li><a href="#products">Beds</a></li>
+              <li><a href="#products">Chair</a></li>
+              <li><a href="#products">All</a></li>
+            </ul>
+          </nav>
+          <nav class="footer__col" aria-labelledby="f-follow">
+            <h2 class="footer__heading" id="f-follow">Follow Us</h2>
+            <ul class="footer__social">
+              <li>
+                <a href="https://facebook.com" target="_blank" rel="noopener">
+                  <svg width="20" height="20" viewBox="-5 0 20 20" aria-hidden="true"><path fill="currentColor" d="M8.11 3.3h1.81V.14C9.61.1 8.54 0 7.28 0 4.67 0 2.88 1.64 2.88 4.66v2.78H0v3.53h2.88v8.87h3.54v-8.87h2.76l.44-3.53H6.42V5.01c0-1.02.27-1.71 1.69-1.71Z" /></svg>
+                  Facebook
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com" target="_blank" rel="noopener">
+                  <svg width="20" height="20" viewBox="0 -2 20 20" aria-hidden="true"><path fill="currentColor" d="M19.56 1.88a8 8 0 0 1-2.31.63A4.03 4.03 0 0 0 19 .3a8.01 8.01 0 0 1-2.54.97A4 4 0 0 0 9.53 4.01c0 .32.03.62.1.91A11.34 11.34 0 0 1 1.36.73a4.01 4.01 0 0 0 1.23 5.36 3.96 3.96 0 0 1-1.81-.5v.05c0 1.95 1.39 3.57 3.21 3.94a4 4 0 0 1-1.81.07 4.05 4.05 0 0 0 3.75 2.79 8.05 8.05 0 0 1-5.93 1.66 11.28 11.28 0 0 0 6.15 1.8c7.38 0 11.41-6.11 11.41-11.41l-.01-.52a8 8 0 0 0 2.01-2.08Z" /></svg>
+                  Twitter
+                </a>
+              </li>
+              <li>
+                <a href="https://instagram.com" target="_blank" rel="noopener">
+                  <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M6.25 0h7.5A6.25 6.25 0 0 1 20 6.25v7.5A6.25 6.25 0 0 1 13.75 20h-7.5A6.25 6.25 0 0 1 0 13.75v-7.5A6.25 6.25 0 0 1 6.25 0Zm7.5 18.13a4.38 4.38 0 0 0 4.38-4.38v-7.5a4.38 4.38 0 0 0-4.38-4.38h-7.5a4.38 4.38 0 0 0-4.38 4.38v7.5a4.38 4.38 0 0 0 4.38 4.38h7.5ZM5 10a5 5 0 1 1 10 0 5 5 0 0 1-10 0Zm1.88 0a3.13 3.13 0 1 0 6.25 0 3.13 3.13 0 0 0-6.25 0Zm8.5-4.71a.67.67 0 1 0 0-1.33.67.67 0 0 0 0 1.33Z" /></svg>
+                  Instagram
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="footer__bottom">
+          <p class="footer__copy">
+            Copyright © 2021 ·
+            Design by <a href="https://www.figma.com/community/file/1061732519182077733/panto-furniture-landing-page-design" target="_blank" rel="noopener">Kretya Studio</a> (CC BY 4.0)
+          </p>
+          <ul class="footer__legal">
+            <li><a href="#contact">Terms &amp; Conditions</a></li>
+            <li><a href="#contact">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <p class="visually-hidden" aria-live="polite" id="cart-status"></p>
+  </body>
+</html>

@@ -1,0 +1,201 @@
+@use 'tokens' as *;
+
+// Transparent over the hero, turns solid once the page is scrolled.
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  color: $c-white;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease,
+    padding 0.3s ease;
+  padding-block: fluid(20, 40) 16px;
+
+  &.is-scrolled {
+    padding-block: 14px;
+    background: rgba($c-white, 0.92);
+    color: $c-text;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(12px);
+  }
+
+  &__inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.nav {
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.2;
+    transition: color 0.2s;
+
+    @include hover {
+      color: $c-primary;
+    }
+  }
+
+  @include up($bp-md) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @include down($bp-lg) {
+    &__list {
+      gap: 36px;
+    }
+  }
+
+  // Mobile overlay
+  @include down($bp-md) {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    background: $c-white;
+    color: $c-text;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s;
+
+    &.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &__list {
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    &__link {
+      font-size: 30px;
+      font-weight: 600;
+
+      svg {
+        display: none;
+      }
+    }
+  }
+}
+
+.cart {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+
+  &__count {
+    position: absolute;
+    top: 2px;
+    right: 0;
+    display: grid;
+    place-items: center;
+    min-width: 20px;
+    height: 20px;
+    padding-inline: 5px;
+    border-radius: 10px;
+    background: $c-primary;
+    color: $c-white;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  &.is-bumped &__count {
+    @include motion {
+      animation: bump 0.4s ease;
+    }
+  }
+}
+
+@keyframes bump {
+  40% {
+    transform: scale(1.45);
+  }
+}
+
+.burger {
+  position: relative;
+  z-index: 2;
+  display: none;
+  width: 44px;
+  height: 44px;
+  margin-right: -10px;
+  padding: 0;
+  border: 0;
+  background: none;
+
+  &__line {
+    position: absolute;
+    left: 11px;
+    right: 11px;
+    height: 2px;
+    border-radius: 1px;
+    background: currentColor;
+    transition:
+      transform 0.3s ease,
+      top 0.3s ease;
+
+    &:first-child {
+      top: 17px;
+    }
+
+    &:last-child {
+      top: 25px;
+    }
+  }
+
+  &[aria-expanded='true'] &__line {
+    top: 21px;
+
+    &:first-child {
+      transform: rotate(45deg);
+    }
+
+    &:last-child {
+      transform: rotate(-45deg);
+    }
+  }
+
+  @include down($bp-md) {
+    display: block;
+  }
+}
+
+// menu open on mobile: header content is dark over the white overlay
+.header.menu-open {
+  color: $c-text;
+}
