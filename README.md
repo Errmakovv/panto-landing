@@ -1,6 +1,6 @@
 # Panto — Furniture Store Landing Page
 
-**Live demo: _coming soon_**
+**Live demo: https://panto-landing-beta.vercel.app**
 
 Responsive landing page for a furniture store, built from a Figma design with **Vite, SCSS and TypeScript**, no UI
 framework.
